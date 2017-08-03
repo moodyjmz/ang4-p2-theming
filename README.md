@@ -7,7 +7,7 @@ To have theming dynamically applied, ie a theme is stored in session/local stora
 
 ## Method
 
- - `theme-injector.js` in header detecting theme from local storage
+ - `theme-injector.js` in head detecting theme from local storage
  - `theme-injector.js` injects link element with theme href into head
  
  Changing theme
