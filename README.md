@@ -78,7 +78,9 @@ Not sure this is the best approach, and appreciate it might be working around th
  
  - Would like to avoid using `location.reload`
  
- - Using importHref didn't reliably load the theme. Content within another element or slot would randomly be styled or not (calling `Polymer.updateStyles()`/`ShadyCSS.styleDocument()` had little to no effect).
+ - Even without Angular, using importHref didn't reliably load the theme. Content within another element or slot would randomly be styled or not (calling `Polymer.updateStyles()`/`ShadyCSS.styleDocument()` after theme load had little to no effect).
+ 
+ 
 
 Just to note, if the theme is statically in index.html, it works without issue.
  
