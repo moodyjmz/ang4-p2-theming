@@ -3,7 +3,7 @@
 
 ## Intention
 
-To have theming dynamically applied, ie a theme is stored in session/local storage and added dynamically in browser - a la switching css files.
+To have theming dynamically applied, ie a theme is stored in session/local storage and added dynamically in browser - à la switching css files.
 
 ## Method
 
@@ -78,7 +78,7 @@ Not sure this is the best approach, and appreciate it might be working around th
  
  - Would like to avoid using `location.reload`
  
- - Encountered issues using importHref (calling `Polymer.updateStyles()`/`ShadyCSS.styleDocument()` had little to no effect.
+ - Encountered issues using importHref (calling `Polymer.updateStyles()`/`ShadyCSS.styleDocument()`) had little to no effect.
 
 Just to note, if the theme is statically in index.html, it works without issue.
  
