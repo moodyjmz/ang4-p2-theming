@@ -1,0 +1,26 @@
+<!--<link rel="import" href="../../../bower_components/polymer/lib/elements/custom-style.html">-->
+
+<custom-style>
+  <style>
+    html {
+      --my-header: {
+        background: none; /* we have no background so no color vars needed */
+        border-top: 2px solid;
+        color: var(--tr-gray-dark); /* all headers use the same text color */
+        padding-left: 0;
+      };
+      /* only change the border colors */
+      --my-header-level1: {
+        border-color: var(--tr-gray-medium);
+
+      };
+      --my-header-level2: {
+        border-color: var(--tr-gray-light);
+      };
+      --my-header-level3: {
+        border-color: var(--tr-gray-muted);
+      };
+    }
+
+  </style>
+</custom-style>

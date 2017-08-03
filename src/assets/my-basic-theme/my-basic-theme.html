@@ -1,0 +1,28 @@
+<!--
+ WOULD BE A BOWER COMPONENT
+-->
+
+<link rel="import" href="../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="colors.html">
+
+
+<dom-module id="my-basic-theme">
+  <template>
+    <style>
+      html {
+        --fallback-font-family: Arial, sans-serif;
+
+        --fallback-color-text-primary: var(--elf-grey-tundora);
+        --fallback-color-text-secondary: var(--elf-grey-emperor);
+        --fallback-color-text-tertiary: var(--elf-grey-storm-gray);
+
+        --fallback-color-primary: var(--elf-grey-loblolly);
+        --fallback-color-secondary: var(--elf-grey-link-water);
+        --fallback-color-tertiary: var(--elf-grey-iron);
+
+      }
+    </style>
+  </template>
+</dom-module>

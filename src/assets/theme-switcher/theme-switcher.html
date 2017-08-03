@@ -1,0 +1,87 @@
+<link rel="import" href="../bower_components/shadycss/apply-shim.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="theme-switcher-storage.html">
+<dom-module id="theme-switcher">
+  <template>
+    <theme-switcher-storage theme-settings="{{_activeTheme}}"
+                                on-refresh-theme="_reloadPage"></theme-switcher-storage>
+    <template is="dom-repeat" items="[[themes]]">
+      <span on-click="_updateTheme">[[item.name]]</span>
+    </template>
+  </template>
+
+  <script>
+
+    class ThemeSwitcher extends Polymer.Element {
+
+      static get is () {
+        return 'theme-switcher';
+      }
+
+      static get properties () {
+        return {
+          themes: {
+            type: Array,
+            value: function () {
+              return [];
+            }
+          }
+
+        };
+      }
+
+      static get observers () {
+        return [
+//          '_changeTheme(_activeTheme)'
+        ];
+      }
+
+      _removeOldTheme (lookup) {
+        let oldImports = document.head.querySelectorAll('link');
+        oldImports.forEach(function (link) {
+          if (link.href.indexOf(lookup) !== -1) {
+            link.remove();
+          }
+        });
+      }
+
+      _changeTheme () {
+        // inject into the document
+        let self = this;
+        let linkTag = '?elfTag';
+        let cacheBuster = '&c=' + (new Date()).getTime();
+        let url = this.resolveUrl('..\/..\/' + this._activeTheme.url + linkTag + cacheBuster);
+
+        this._removeOldTheme(linkTag);
+//        Polymer.RenderStatus.afterNextRender(this,function () {
+
+//        Polymer.importHref(url, function (e) {
+//          Polymer.RenderStatus.flush();
+//
+//            console.log(e);
+//            console.log('updating theme styles to ' + self._activeTheme.name);
+//            Polymer.flush();
+//            Polymer.updateStyles();
+////          });
+//
+//
+//
+//        });
+
+      }
+
+      _updateTheme (e) {
+        this._activeTheme = e.model.get('item');
+      }
+
+      _reloadPage () {
+        console.log('reload the page');
+        window.location.reload(true);
+      }
+
+    }
+
+    window.customElements.define(ThemeSwitcher.is, ThemeSwitcher);
+  </script>
+</dom-module>

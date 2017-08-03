@@ -1,0 +1,77 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="my-basic-theme/my-basic-theme.html">
+
+<dom-module id="my-header">
+  <template>
+    <style include="my-basic-theme">
+      /*https://github.com/Polymer/docs/issues/1821#issuecomment-261629322*/
+      /*https://github.com/Polymer/polymer-cli/issues/779*/
+      :host {
+        display: block;
+        font-family: var(--font-family, var(--fallback-font-family));
+      }
+
+      :host header {
+        display: block;
+        text-transform: uppercase;
+        position: relative;
+        @apply --my-header;
+      }
+
+      :host .level1 {
+        background-color: var(--my-header-color-level1, var(--color-primary, var(--fallback-color-primary)));
+        color: var(--my-header-color-text-level1, var(--color-text-primary, var(--fallback-color-text-primary)));
+        @apply --my-header;
+        @apply --my-header-level1;
+      }
+
+      :host .level2 {
+        background-color: var(--my-header-color-level2, var(--color-secondary, var(--fallback-color-secondary)));
+        color: var(--my-header-color-text-level2, var(--color-text-secondary, var(--fallback-color-text-secondary)));
+        @apply --my-header;
+        @apply --my-header-level2;
+      }
+
+      :host .level3 {
+        background-color: var(--my-header-color-level3, var(--color-tertiary, var(--fallback-color-tertiary)));
+        color: var(--my-header-color-text-level3, var(--color-text-tertiary, var(--fallback-color-text-tertiary)));
+        text-transform: none;
+        @apply --my-header;
+        @apply --my-header-level3;
+      }
+    </style>
+    <header class$="level[[level]]">
+      <slot></slot>
+    </header>
+  </template>
+
+  <script>
+    /**
+     * `my-header-p2`
+     * coral header test using polymer 2
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MyHeader extends Polymer.Element {
+
+      static get is () {
+        return 'my-header';
+      }
+
+      static get properties () {
+        return {
+          level: {
+            type: String,
+            value: '2'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MyHeader.is, MyHeader);
+  </script>
+</dom-module>

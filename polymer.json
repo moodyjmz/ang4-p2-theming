@@ -1,0 +1,41 @@
+{
+  "entrypoint": "dist/index.html",
+  "shell": "dist/assets/import.html",
+  "fragments": [
+    "dist/assets/bower_components/polymer/lib/elements/custom-style.html",
+    "dist/assets/bower_components/shadycss/apply-shim.html"
+  ],
+  "sources": [
+    "dist/assets/theme/**",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "dist/assets/theme-injector.js",
+    "dist/assets/bower_components/webcomponentsjs/*",
+    "dist/inline.bundle.js",
+    "dist/main.bundle.js",
+    "dist/polyfills.bundle.js",
+    "dist/styles.bundle.js",
+    "dist/vendor.bundle.js"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  },
+  "builds": [
+    {
+      "preset": "es5-bundled",
+      "js": {
+        "minify": false,
+        "compile": true
+      },
+      "css": {
+        "minify": false
+      },
+      "html": {
+        "minify": false
+      }
+    }
+  ]
+}

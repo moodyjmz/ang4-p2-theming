@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ang4P2Theme</title>
+  <base href="/">
+  <script src="assets/theme-injector.js"></script>
+
+  <script src="assets/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+
+
+  <!--<link rel="import" href="assets/theme/tr-corp/theme.html">-->
+
+  <link rel="import" href="assets/import.html">
+
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<theme-switcher></theme-switcher>
+
+  <app-root>Loading...</app-root>
+  <my-header>sd</my-header>
+  <my-header level="3">sd</my-header>
+  <my-panel>
+    <my-header>sd i</my-header>
+    <my-header level="3">sd i</my-header>
+  </my-panel>
+  <script>
+    {
+      let ElFAppName = 'theme-poc';
+      let switcher = document.querySelector('theme-switcher');
+      if (switcher !== null) {
+        switcher.themes = [
+          {
+            name: 'charcoal',
+            url: 'assets/theme/solar/charcoal.html',
+            appName: ElFAppName
+          },
+          {
+            name: 'pearl',
+            url: 'assets/theme/solar/pearl.html',
+            appName: ElFAppName
+          },
+          {
+            name: 'clarivate',
+            url: 'assets/theme/clarivate/theme.html',
+            appName: ElFAppName
+          },
+          {
+            name: 'tr-corp',
+            url: 'assets/theme/tr-corp/theme.html',
+            appName: ElFAppName
+          }
+        ];
+      }
+    }
+//      document.addEventListener('WebComponentsReady', function () {
+//
+//        var arr = [
+//          'inline.bundle.js',
+//          'polyfills.bundle.js',
+//          'styles.bundle.js',
+//          'vendor.bundle.js',
+//          'main.bundle.js'
+//        ];
+//        arr.forEach(function (ref) {
+//          var i = document.createElement('script');
+//          i.src = ref;
+//          i.async = false;
+//          i.type = 'text/javascript';
+//          document.body.appendChild(i);
+//        });
+//      });
+  </script>
+</body>
+</html>

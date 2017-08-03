@@ -1,0 +1,92 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<dom-module id="theme-switcher-storage">
+  <script>
+    class ThemeSwitcherStorage extends Polymer.Element {
+
+      static get is () {
+        return 'theme-switcher-storage';
+      }
+
+      static get properties () {
+        return {
+          /**
+           * theme-settings
+           * @type Object
+           */
+          themeSettings: {
+            type: Object,
+            notify: true,
+//            value: function () {
+//              return {};
+//            },
+            observer: '_saveTheme'
+          }
+        };
+      }
+
+      constructor () {
+        super();
+        this._nameSpace = '_themeTest';
+        this._savedSettings = null;
+      }
+
+      ready () {
+        super.ready();
+        this._checkForTheme();
+
+
+//        Polymer.RenderStatus.afterNextRender(this, function () {
+//
+//        });
+      }
+
+      _checkForTheme () {
+        let settings = this._fetchData();
+        if (settings && settings.name) {
+          this._savedSettings = settings; // best this is declared first
+          this.themeSettings = settings;
+        }
+      }
+//
+      _saveTheme (themeData) {
+        if((themeData && themeData.name) && !ThemeSwitcherStorage._doThemesMatch(themeData, this._savedSettings)) {
+          this._persistData(themeData);
+          console.log('this._savedSettings', this._savedSettings, typeof this._savedSettings);
+            console.log('firing');
+            this.dispatchEvent(new CustomEvent('refresh-theme', { detail: themeData }));
+        }
+      }
+
+      static _doThemesMatch (theme, oldTheme) {
+        if(oldTheme === null) {
+          return false;
+        }
+        for(let k in theme) {
+          if(oldTheme[k] && theme[k] !== oldTheme[k]) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      _persistData (data) {
+        if (Storage) {
+          localStorage.setItem(this._nameSpace, JSON.stringify(data));
+        }
+
+      }
+
+      _fetchData () {
+        if (Storage) {
+          let settings = localStorage.getItem(this._nameSpace);
+          if (settings !== undefined) {
+            this._settings = JSON.parse(settings);
+          }
+        }
+        return this._settings;
+      }
+    }
+
+    window.customElements.define(ThemeSwitcherStorage.is, ThemeSwitcherStorage);
+  </script>
+</dom-module>

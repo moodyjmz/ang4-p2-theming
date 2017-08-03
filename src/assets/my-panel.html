@@ -1,0 +1,19 @@
+<link rel="import" href="bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-panel">
+  <template strip-whitespace>
+    <slot></slot>
+  </template>
+  <script>
+    class MyPanel extends Polymer.Element {
+      static get is () {
+        return 'my-panel';
+      }
+
+    }
+
+    window.customElements.define(MyPanel.is, MyPanel);
+  </script>
+</dom-module>
